@@ -13,10 +13,7 @@ export class Order {
       (total, { price, quantity }) => total + price * quantity,
       0
     );
-    if (this.discount > 0) {
-      const discountDifference = this.discount / 100;
-      return Math.floor(subTotal * (1 - discountDifference) * 100) / 100;
-    }
-    return subTotal;
+    const discountDifference = this.discount / 100;
+    return Math.floor(subTotal * (1 - discountDifference) * 100) / 100;
   }
 }
