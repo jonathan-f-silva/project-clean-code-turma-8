@@ -17,10 +17,12 @@ describe("Classe CPF", () => {
     expect(() => new CPF("11144477735")).toThrow("Erro: CPF inválido");
   });
   test("Aceita CPF válido", () => {
+    expect(() => new CPF("000.009.000-01")).not.toThrow("Erro: CPF inválido");
     expect(() => new CPF("111.444.777-35")).not.toThrow("Erro: CPF inválido");
   });
   test("Retorna o CPF caso seja convertido em string", () => {
     const cpf = new CPF("111.444.777-35");
+    expect(cpf.toString()).toEqual("111.444.777-35");
     expect(String(cpf)).toEqual("111.444.777-35");
   });
 });
