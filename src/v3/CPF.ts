@@ -22,8 +22,8 @@ export class CPF {
 
   private getCpfDigits() {
     const cpfDigits = this.cpf.match(/\d/g);
-    if (!cpfDigits || cpfDigits.length !== 11) return false;
-    if (cpfDigits.every((digit) => digit === cpfDigits[0])) return false;
+    if (!cpfDigits || cpfDigits.every((digit) => digit === cpfDigits[0]))
+      return false;
     return cpfDigits.map((digit) => Number(digit));
   }
 
