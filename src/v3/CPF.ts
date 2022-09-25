@@ -21,6 +21,7 @@ export class CPF {
   }
 
   private getCpfDigits() {
+    if (!this.isValidCpfFormat()) return false;
     const cpfDigits = this.cpf.match(/\d/g);
     if (!cpfDigits || cpfDigits.every((digit) => digit === cpfDigits[0]))
       return false;
@@ -32,15 +33,15 @@ export class CPF {
   }
 
   private isValidCpf() {
-    if (!this.isValidCpfFormat()) return false;
     const cpfDigits = this.getCpfDigits();
-    if (!cpfDigits) return false;
-    const baseDigits = cpfDigits.slice(0, this.FIRST_DV_INDEX);
-    const dvDigit1 = cpfDigits[this.FIRST_DV_INDEX];
-    const dvDigit2 = cpfDigits[this.FIRST_DV_INDEX + 1];
-    if (this.calculateDvDigit([...baseDigits]) === dvDigit1) {
-      if (this.calculateDvDigit([...baseDigits, dvDigit1]) === dvDigit2) {
-        return true;
+    if (cpfDigits) {
+      const baseDigits = cpfDigits.slice(0, this.FIRST_DV_INDEX);
+      const dvDigit1 = cpfDigits[this.FIRST_DV_INDEX];
+      const dvDigit2 = cpfDigits[this.FIRST_DV_INDEX + 1];
+      if (this.calculateDvDigit([...baseDigits]) === dvDigit1) {
+        if (this.calculateDvDigit([...baseDigits, dvDigit1]) === dvDigit2) {
+          return true;
+        }
       }
     }
     return false;
