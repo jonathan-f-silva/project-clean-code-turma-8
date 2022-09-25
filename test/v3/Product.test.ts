@@ -7,6 +7,7 @@ describe("Classe Product", () => {
     expect(product.price).toEqual(1.7);
     expect(product.quantity).toEqual(3);
   });
+
   test("Não deve cadastrar com descrição vazia", () => {
     expect(() => new Product("", 0, 0)).toThrow(
       "Erro: Produto com descrição inválida"
@@ -18,6 +19,7 @@ describe("Classe Product", () => {
       "Erro: Produto com preço inválido"
     );
   });
+
   test("Não deve cadastrar com quantidade negativa", () => {
     expect(() => new Product("Bola", 1, -10)).toThrow(
       "Erro: Produto com quantidade inválida"

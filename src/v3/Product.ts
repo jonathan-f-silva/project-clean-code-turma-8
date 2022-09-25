@@ -11,12 +11,15 @@ export class Product {
     if (!this.isValidQuantity())
       throw new Error("Erro: Produto com quantidade inválida");
   }
+
   private isValidDescription() {
     return this.description !== "";
   }
+
   private isValidPrice() {
     return this.price >= 0;
   }
+
   private isValidQuantity() {
     return this.quantity >= 0;
   }

@@ -1,6 +1,5 @@
 import { CPF } from "./CPF";
 import { Product } from "./Product";
-
 export class Order {
   constructor(
     readonly cpf: CPF,
