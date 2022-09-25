@@ -6,7 +6,9 @@ export class Order {
     readonly cpf: CPF,
     readonly products: Product[],
     readonly discount = 0
-  ) {}
+  ) {
+    if (products.length === 0) throw new Error("Erro: Pedido sem produtos");
+  }
 
   get totalPrice() {
     const subTotal = this.products.reduce(

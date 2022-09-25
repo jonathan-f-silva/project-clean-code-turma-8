@@ -21,4 +21,8 @@ describe("Classe Order", () => {
 
     expect(order.totalPrice).toEqual(17.88);
   });
+
+  test("Não deve criar um pedido vazio", () => {
+    expect(() => new Order(cpf, [])).toThrow("Erro: Pedido sem produtos");
+  });
 });
